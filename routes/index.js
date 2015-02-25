@@ -45,4 +45,38 @@ async.mapSeries(stuff, function (word, next) {
 
 });
 
+router.get('/:id', function(req, res) {
+
+var phrase = 'may the force be with you';
+var key = "TZlKw4gd1qFQhA2CbMLa";
+var urlBase = "http://thesaurus.altervista.org/service.php?language=en_US&output=json&key=" + key + "&word=";
+
+var stuff = phrase.split(' ');
+
+async.mapSeries(stuff, function (word, next) { 
+  request(urlBase + word, function (error, response, body) { 
+    if (error) return console.error(error);
+    var list = JSON.parse(body).response;
+    next(null, { word: word, list: list });
+  })
+}, //end of sencond argument 
+function (error, results) { 
+  var counts = _.map(_.compact(results), function (result) { 
+      var allwords = _.unique(_.reduce(result.list, function (all, response) { 
+      var syns = response.list.synonyms.split('|');
+      return all.concat(syns);
+    },[ ])); // end of unique function stored in counts 
+      return {
+        word: result.word,
+        count: allwords.length
+      };  
+    });//end of counts variable 
+    var sorted = _.sortBy(counts, function (result) {
+      return 0 - result.count;
+    });
+    console.log('This is the word with the most synonyms', sorted[0].word, 'with', sorted[0].count, 'synonyms');
+  }
+);
+});
+
 module.exports = router;
