@@ -4,7 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var async = require('async');
-var bodyParser = require('bgit remote add origin git@github.com:troy0820/async_tutorial.gitasody-parser');
+var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
