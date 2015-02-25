@@ -47,7 +47,7 @@ async.mapSeries(stuff, function (word, next) {
 
 router.get('/:id', function(req, res) {
 
-var phrase = 'may the force be with you';
+var phrase = 'What is the best language';
 var key = "TZlKw4gd1qFQhA2CbMLa";
 var urlBase = "http://thesaurus.altervista.org/service.php?language=en_US&output=json&key=" + key + "&word=";
 
@@ -61,8 +61,8 @@ async.mapSeries(stuff, function (word, next) {
   })
 }, //end of sencond argument 
 function (error, results) { 
-  var counts = _.map(_.compact(results), function (result) { 
-      var allwords = _.unique(_.reduce(result.list, function (all, response) { 
+  var counts = _.map(_.compact(results), function (result) { // start of _.map function stored to counts
+      var allwords = _.unique(_.reduce(result.list, function (all, response) {  //start of unique function stored to all words stil in map function
       var syns = response.list.synonyms.split('|');
       return all.concat(syns);
     },[ ])); // end of unique function stored in counts 
