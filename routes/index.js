@@ -77,6 +77,7 @@ function (error, results) {
     console.log('This is the word with the most synonyms', sorted[0].word, 'with', sorted[0].count, 'synonyms');
   }
 );
+
 });
 
 module.exports = router;
