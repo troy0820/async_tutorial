@@ -15,7 +15,7 @@ var urlBase = "http://thesaurus.altervista.org/service.php?language=en_US&output
 var stuff = phrase.split(' ');
 async.mapSeries(stuff, function (word, next) {
     console.log('word', word);
-    request(urlBase + word, function(error, response, body) {
+    request(urlBase + word, function (error, response, body) {
       if (error) return console.error(error);
       var list = JSON.parse(body).response;
       next(null, { word: word, list: list });
