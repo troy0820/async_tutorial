@@ -45,7 +45,7 @@ async.mapSeries(stuff, function (word, next) {
 
 });
 
-router.get('/:id', function(req, res) {
+/*router.get('/:id', function(req, res) {
 
 var phrase = 'What is the best language';
 var key = "TZlKw4gd1qFQhA2CbMLa";
@@ -78,8 +78,10 @@ function (error, results) {
   }
 );
 
-router.get('/promise',function(req, res) {
-  'use strict';
+});
+*/
+router.get('/:id', function(req, res) {
+'use strict';
 
 var bpromise = require('bluebird'),
     request = require('request'),
@@ -123,9 +125,6 @@ function syncount(phrase) {
 }
 
 syncount('may the force be with you');
-
-})
-
 });
 
 module.exports = router;
