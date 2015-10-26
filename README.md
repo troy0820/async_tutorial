@@ -9,8 +9,7 @@ git clone https://github.com/troy0820/async_tutorial.git
 cd async_tutorial
 npm install
 ````
-###Presentation Slides
-http://ursahealth.github.io/async.html
+
 
 ###Solution
 ```
